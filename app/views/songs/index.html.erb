@@ -1,0 +1,6 @@
+<h1>All Songs</h1>
+<!-- Artist Name - Song Title -->
+<% @songs.each do |s| %>
+  <li><%= link_to s.display_in_index, song_path(s) %></li>
+<% end %>
+ 
