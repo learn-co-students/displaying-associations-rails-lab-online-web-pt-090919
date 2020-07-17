@@ -13,7 +13,7 @@ class SongsController < ApplicationController
 
   def create
     @song = Song.new(song_params)
-    @song.artist = Artist.find_or_create_by(artist_params)
+    @song.artist = Artist.find_or_create_by(artist_params) # Find or create and Artist
 
     if @song.save
       redirect_to @song
@@ -41,7 +41,7 @@ class SongsController < ApplicationController
   def destroy
     @song = Song.find(params[:id])
     @song.destroy
-    flash[:notice] = "Song deleted."
+    flash[:notice] = "Song deleted." # flash is used to send a message or present an error
     redirect_to songs_path
   end
 
@@ -52,6 +52,6 @@ class SongsController < ApplicationController
   end
 
   def artist_params
-    params.require(:artist).permit(:name)
+    params.require(:artist).permit(:name) # To be able to access the params from Artist
   end
 end

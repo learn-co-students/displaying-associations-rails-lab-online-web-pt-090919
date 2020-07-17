@@ -1,18 +1,18 @@
 class ArtistsController < ApplicationController
   def index
-    @artists = Artist.all
+    @artists = Artist.all # showing all Artists
   end
 
   def show
-    @artist = Artist.find(params[:id])
+    @artist = Artist.find(params[:id]) # find a certain artist
   end
 
   def new
-    @artist = Artist.new
+    @artist = Artist.new # create a new artist
   end
 
   def create
-    @artist = Artist.new(artist_params)
+    @artist = Artist.new(artist_params) # process of saving or creating an Artist
 
     if @artist.save
       redirect_to @artist
@@ -22,7 +22,7 @@ class ArtistsController < ApplicationController
   end
 
   def edit
-    @artist = Artist.find(params[:id])
+    @artist = Artist.find(params[:id]) 
   end
 
   def update
@@ -40,7 +40,7 @@ class ArtistsController < ApplicationController
   def destroy
     @artist = Artist.find(params[:id])
     @artist.destroy
-    flash[:notice] = "Artist deleted."
+    flash[:notice] = "Artist deleted." # a comment ketting you know an Artist was deleted
     redirect_to artists_path
   end
 
